@@ -6,6 +6,10 @@ import fitz  # PyMuPDF
 def generate_pdf():
     material = material_entry.get()
     weight = weight_entry.get()
+    hours = drift_timmar.get()
+
+    # Calculate the energy
+    
 
     if not material or not weight:
         messagebox.showerror("Input Error", "Please enter both Material and Weight.")
@@ -21,6 +25,8 @@ def generate_pdf():
                 para.text = para.text.replace("{{material}}", material)
             if "{{weight}}" in para.text:
                 para.text = para.text.replace("{{weight}}", weight)
+            if "{{hours}}" in para.text:
+                para.text = para.text.replace("{{hours}}", hours) 
 
         # Save updated document
         doc.save("output.docx")
@@ -47,11 +53,15 @@ tk.Label(root, text="Material:").grid(row=0, column=0, padx=10, pady=5, sticky="
 material_entry = tk.Entry(root, width=30)
 material_entry.grid(row=0, column=1, padx=10, pady=5)
 
-tk.Label(root, text="Weight:").grid(row=1, column=0, padx=10, pady=5, sticky="e")
+tk.Label(root, text="Vikt:").grid(row=1, column=0, padx=10, pady=5, sticky="e")
 weight_entry = tk.Entry(root, width=30)
 weight_entry.grid(row=1, column=1, padx=10, pady=5)
 
+tk.Label(root, text="Drift timmar:").grid(row=2, column=0, padx=10, pady=5, sticky="e")
+drift_timmar = tk.Entry(root, width=30)
+drift_timmar.grid(row=2, column=1, padx=10, pady=5)
+
 generate_button = tk.Button(root, text="Generate PDF", command=generate_pdf)
-generate_button.grid(row=2, column=0, columnspan=2, pady=10)
+generate_button.grid(row=3, column=0, columnspan=2, pady=10)
 
 root.mainloop()
