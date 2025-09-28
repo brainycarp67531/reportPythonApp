@@ -1,0 +1,38 @@
+Yep 👍 same kind of issue as before.
+
+The module `fitz` comes from the **PyMuPDF** package, but the import name and the pip package name are different.
+
+### ✅ Install PyMuPDF
+
+If you’re using a virtual environment (recommended):
+
+```bash
+
+source venv/bin/activate   # if not already activated
+pip install PyMuPDF
+
+```
+
+If you’re not in a venv and want it just for your user:
+
+```bash
+
+pip install --user PyMuPDF
+
+```
+
+---
+
+### ⚡️ Test after install
+
+```bash
+
+python3 -c "import fitz; print(fitz.__doc__[:60])"
+
+```
+
+If no error appears, it’s installed correctly.
+
+---
+
+👉 Do you want me to walk you through setting up a `requirements.txt` for your `reportPythonApp` so you can install **all needed packages at once** instead of chasing them one by one?
